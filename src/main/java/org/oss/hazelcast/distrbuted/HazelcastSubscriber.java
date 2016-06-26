@@ -36,6 +36,7 @@ public class HazelcastSubscriber implements MessageListener<Map<String,Object>>
     @Override
     public void onMessage(Message<Map<String, Object>> message)
     {
-        System.out.println(message.getMessageObject());
+        System.out.println(message.getMessageObject()+" -"+message.getPublishingMember());
+
     }
 }
