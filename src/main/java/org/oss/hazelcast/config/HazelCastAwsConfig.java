@@ -14,10 +14,10 @@ import javax.annotation.PostConstruct;
 public class HazelCastAwsConfig {
 
 
-    @Value("{aws.access.key:qqqqq}")
+    @Value("${aws.access.key:qqqqq}")
     private String awsAccessKey;
 
-    @Value("{aws.secret.access.key:kkkkk}")
+    @Value("${aws.secret.access.key:kkkkk}")
     private String awsSecrectKey;
 
     @PostConstruct
@@ -27,6 +27,7 @@ public class HazelCastAwsConfig {
     }
 
     /*
+
     @Bean
     public Config createConig()
     {
