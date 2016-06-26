@@ -26,8 +26,6 @@ public class HazelCastLocaConfig
         c.getNetworkConfig().setJoin(new JoinConfig());
         c.getNetworkConfig().getJoin().getMulticastConfig().setEnabled(true);
 
-        c.getNetworkConfig().getJoin().getAwsConfig().setEnabled(true);
-        c.getNetworkConfig().getJoin().getAwsConfig().setEnabled(true);
 
         return c;
     }

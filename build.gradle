@@ -31,12 +31,9 @@ repositories {
 
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter')
+	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('com.hazelcast:hazelcast-all:3.6.1')
 	testCompile('org.springframework.boot:spring-boot-starter-test') 
 }
 
-springBoot {
-	executable = true
-}
 
