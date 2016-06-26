@@ -13,8 +13,6 @@ import java.util.concurrent.locks.Lock;
 @SpringBootTest
 public class HazelcastServerApplicationTests {
 
-	@Autowired
-	private HazelcastInstance instance;
 
 
 
@@ -23,27 +21,6 @@ public class HazelcastServerApplicationTests {
 	public void contextLoads() {
 	}
 
-	@Test
-	public void testLock() throws Exception
-	{
-		Lock lock= instance.getLock("my-dis-lock");
-		System.out.println("aquriing lock");
-		System.out.println("aquriing lock");
-		System.out.println("aquriing lock");
-
-		lock.lock();
-		System.out.println("Lock aquire");
-		System.out.println("Lock aquire");
-		System.out.println("Lock aquire");
-		Thread.sleep(40000);
-		lock.unlock();
-		System.out.println("Lock  release");
-		System.out.println("Lock  release");
-		System.out.println("Lock  release");
-
-		Thread.sleep(60000);
-
-	}
 
 
 }
