@@ -3,6 +3,9 @@ package org.oss.hazelcast.config;
 import com.hazelcast.config.Config;
 import com.hazelcast.config.JoinConfig;
 import com.hazelcast.config.NetworkConfig;
+import com.hazelcast.core.Hazelcast;
+import com.hazelcast.core.HazelcastInstance;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +30,13 @@ public class HazelCastLocaConfig
         c.getNetworkConfig().getJoin().getAwsConfig().setEnabled(true);
 
         return c;
+    }
+
+    @Bean
+    @Autowired
+    public HazelcastInstance createInstance(Config config)
+    {
+        return Hazelcast.newHazelcastInstance(config);
     }
 
 
