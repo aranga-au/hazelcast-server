@@ -13,8 +13,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * Created by arang on 25/06/2016.
  */
-@Configuration
-@ConditionalOnMissingBean(HazelCastAwsConfig.class)
+
 public class HazelCastLocaConfig
 {
     @Bean

@@ -7,12 +7,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 
 /**
  * Created by arang on 25/06/2016.
  */
 @Configuration
-@ConditionalOnProperty({"aws.access.key"})
+@ConditionalOnProperty("aws.access.key")
 public class HazelCastAwsConfig {
 
 
@@ -27,6 +28,7 @@ public class HazelCastAwsConfig {
     public Config createConig()
     {
         try {
+            System.out.println(awsAccessKey);
             Config c = new Config();
             c.setInstanceName("test-hazelcast-instance-1");
             c.setNetworkConfig(new NetworkConfig());
