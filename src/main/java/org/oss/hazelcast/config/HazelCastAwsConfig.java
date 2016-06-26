@@ -1,13 +1,10 @@
 package org.oss.hazelcast.config;
 
-import com.hazelcast.config.Config;
-import com.hazelcast.config.JoinConfig;
-import com.hazelcast.config.NetworkConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.SystemEnvironmentPropertySource;
+
+import javax.annotation.PostConstruct;
 
 /**
  * Created by arang on 25/06/2016.
@@ -23,7 +20,13 @@ public class HazelCastAwsConfig {
     @Value("{aws.secret.access.key:kkkkk}")
     private String awsSecrectKey;
 
+    @PostConstruct
+    public void  init()
+    {
+        System.out.println(awsAccessKey);
+    }
 
+    /*
     @Bean
     public Config createConig()
     {
@@ -52,6 +55,6 @@ public class HazelCastAwsConfig {
         }
 
 
-    }
+    }*/
 
 }

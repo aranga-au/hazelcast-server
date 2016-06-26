@@ -1,21 +1,12 @@
 package org.oss.hazelcast.config;
 
-import com.hazelcast.config.Config;
-import com.hazelcast.config.JoinConfig;
-import com.hazelcast.config.NetworkConfig;
-import com.hazelcast.core.Hazelcast;
-import com.hazelcast.core.HazelcastInstance;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
 /**
  * Created by arang on 25/06/2016.
  */
 
 public class HazelCastLocaConfig
 {
+    /*
     @Bean
     public Config createConig()
     {
@@ -30,6 +21,6 @@ public class HazelCastLocaConfig
 
         return c;
     }
-
+*/
 
 }
