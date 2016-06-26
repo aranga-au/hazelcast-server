@@ -52,6 +52,7 @@ public class HazelCastAwsConfig {
             c.getNetworkConfig().getJoin().getAwsConfig().setSecurityGroupName("hazelcast-sg");
             c.getNetworkConfig().getJoin().getAwsConfig().setTagKey("type");
             c.getNetworkConfig().getJoin().getAwsConfig().setTagValue("hz-nodes");
+            c.getNetworkConfig().getJoin().getAwsConfig().setConnectionTimeoutSeconds(3600);
             return c;
         }
         catch (Throwable e)
