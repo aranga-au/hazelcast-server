@@ -2,3 +2,5 @@
 /.gradle/
 /.idea/
 /build/
+/src/test/test.iml
+*.iml
