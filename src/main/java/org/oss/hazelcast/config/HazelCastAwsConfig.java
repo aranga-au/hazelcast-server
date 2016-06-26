@@ -50,8 +50,6 @@ public class HazelCastAwsConfig {
             c.getNetworkConfig().getJoin().getAwsConfig().setRegion("ap-southeast-2");
             c.getNetworkConfig().getJoin().getAwsConfig().setHostHeader("ec2.amazonaws.com");
             c.getNetworkConfig().getJoin().getAwsConfig().setSecurityGroupName("hazelcast-sg");
-            c.getNetworkConfig().getJoin().getAwsConfig().setTagKey("type");
-            c.getNetworkConfig().getJoin().getAwsConfig().setTagValue("hz-nodes");
             c.getNetworkConfig().getJoin().getAwsConfig().setConnectionTimeoutSeconds(3600);
             return c;
         }
