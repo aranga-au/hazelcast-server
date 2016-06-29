@@ -35,7 +35,7 @@ public class PublishController
         Lock lock = instance.getLock("my-lock");
         try
         {
-            if (lock.tryLock(500, TimeUnit.MILLISECONDS))
+            if (lock.tryLock())
             {
                 Thread.sleep(13500);
                 message.put("lock",true);
