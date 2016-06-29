@@ -37,7 +37,7 @@ public class PublishController
         {
             if (lock.tryLock(500, TimeUnit.MILLISECONDS))
             {
-                Thread.sleep(3500);
+                Thread.sleep(13500);
                 message.put("lock",true);
                 lock.unlock();
             }
