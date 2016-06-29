@@ -26,6 +26,9 @@ public class PublishController
     @Autowired
     private HazelcastInstance instance;
 
+    @Autowired
+    private HazelcastPublisher publisher;
+
     @RequestMapping("/api/publish")
     public Map<String,Object> publish()
     {
@@ -35,10 +38,14 @@ public class PublishController
         Lock lock = instance.getLock("my-lock");
         try
         {
-            if (lock.tryLock())
+            if (lock.tryLock(20,TimeUnit.SECONDS))
             {
-                Thread.sleep(13500);
                 message.put("lock",true);
+                publisher.publish(message);
+                Thread.sleep(13500);
+
+
+
                 lock.unlock();
             }
             else
