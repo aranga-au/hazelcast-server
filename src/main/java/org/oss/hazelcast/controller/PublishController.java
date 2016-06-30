@@ -35,12 +35,14 @@ public class PublishController
         final Map<String,Object> message = new HashMap<String,Object>();
         message.put("time",new Date().toString());
         message.put("instance id",instanceId);
+        long ii =System.currentTimeMillis();
         Lock lock = instance.getLock("my-lock");
         try
         {
             if (lock.tryLock())
             {
                 message.put("lock",true);
+                message.put("lock time",(System.currentTimeMillis()-ii)+" ms");
                 publisher.publish(message);
                 Thread.sleep(13500);
 
