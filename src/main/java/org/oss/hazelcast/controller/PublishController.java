@@ -38,7 +38,7 @@ public class PublishController
         Lock lock = instance.getLock("my-lock");
         try
         {
-            if (lock.tryLock(2,TimeUnit.SECONDS))
+            if (lock.tryLock(50,TimeUnit.MILLISECONDS))
             {
                 message.put("lock",true);
                 publisher.publish(message);
@@ -51,6 +51,7 @@ public class PublishController
             else
             {
                 message.put("lock",false);
+
             }
         }
         catch (Throwable e)
