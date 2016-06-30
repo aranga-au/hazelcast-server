@@ -49,6 +49,7 @@ public class HazelcastSubscriber implements MessageListener<Map<String,Object>>
         System.out.println(tmp);
         ObjectMapper mapper = new ObjectMapper();
         byte[] bytes=null;
+
         System.out.println(message.getMessageObject()+" -"+message.getPublishingMember());
         try {
 
@@ -71,6 +72,7 @@ public class HazelcastSubscriber implements MessageListener<Map<String,Object>>
 
 
         }
+        message.getMessageObject().put("member",message.getPublishingMember().toString());
         r.add(message.getMessageObject());
         try {
 
