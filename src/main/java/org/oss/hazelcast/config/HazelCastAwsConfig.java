@@ -48,8 +48,8 @@ public class HazelCastAwsConfig {
             c.getNetworkConfig().getJoin().getMulticastConfig().setEnabled(false);
             c.getNetworkConfig().getJoin().getTcpIpConfig().setEnabled(false);
             c.getNetworkConfig().getJoin().getAwsConfig().setEnabled(true);
-            //c.getNetworkConfig().getJoin().getAwsConfig().setAccessKey(awsAccessKey);
-            //c.getNetworkConfig().getJoin().getAwsConfig().setSecretKey(awsSecrectKey);
+            c.getNetworkConfig().getJoin().getAwsConfig().setAccessKey(awsAccessKey);
+            c.getNetworkConfig().getJoin().getAwsConfig().setSecretKey(awsSecrectKey);
             c.getNetworkConfig().getJoin().getAwsConfig().setRegion("ap-southeast-2");
             c.getNetworkConfig().getJoin().getAwsConfig().setHostHeader("ec2.amazonaws.com");
             c.getNetworkConfig().getJoin().getAwsConfig().setSecurityGroupName("hazelcast-sg");
