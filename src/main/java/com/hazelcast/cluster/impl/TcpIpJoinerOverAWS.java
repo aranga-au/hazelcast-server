@@ -40,6 +40,7 @@ public class TcpIpJoinerOverAWS extends TcpIpJoiner
     {
         super(Validate.notNull(node, "node can't be null"));
 
+        System.out.println("HEllooo");
         logger = node.getLogger(getClass());
         awsConfig = node.getConfig().getNetworkConfig().getJoin().getAwsConfig();
         ec2 = new AmazonEC2Client(newAwsCredentialsProvider(awsConfig.getAccessKey(),
