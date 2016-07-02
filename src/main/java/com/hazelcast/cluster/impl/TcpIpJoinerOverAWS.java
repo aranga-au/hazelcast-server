@@ -54,6 +54,7 @@ public class TcpIpJoinerOverAWS extends TcpIpJoiner
         }
         if (isNotBlank(awsConfig.getRegion()))
         {
+            logger.info("region not provided,using sdk"+ getRegion(null));
             ec2.setRegion(getRegion(awsConfig.getRegion()));
         }
     }
