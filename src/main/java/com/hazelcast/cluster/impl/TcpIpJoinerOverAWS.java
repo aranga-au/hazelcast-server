@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.List;
 
 
-import com.amazonaws.regions.RegionUtils;
+
 import org.apache.commons.lang3.Validate;
 
 import com.amazonaws.auth.AWSCredentialsProvider;
@@ -45,7 +45,7 @@ public class TcpIpJoinerOverAWS extends TcpIpJoiner
 
         logger = node.getLogger(getClass());
         logger.info("================================================");
-        logger.info("Using custom TcpIpJoinerOverAWS");
+        logger.info("  Using custom TcpIpJoinerOverAWS                 ");
         logger.info("================================================");
         awsConfig = node.getConfig().getNetworkConfig().getJoin().getAwsConfig();
         ec2 = new AmazonEC2Client(newAwsCredentialsProvider(awsConfig.getAccessKey(),
@@ -63,11 +63,13 @@ public class TcpIpJoinerOverAWS extends TcpIpJoiner
 
     }
 
-    private static AWSCredentialsProvider newAwsCredentialsProvider(final String accessKey,
+    private  AWSCredentialsProvider newAwsCredentialsProvider(final String accessKey,
                                                                     final String secretKey)
     {
         if (isBlank(accessKey) && isBlank(secretKey))
         {
+
+            logger.info("Using Instance Role");
             return new DefaultAWSCredentialsProviderChain();
         }
 
