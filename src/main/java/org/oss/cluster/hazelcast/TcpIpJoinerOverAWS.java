@@ -1,4 +1,4 @@
-package com.hazelcast.cluster.impl;
+package org.oss.cluster.hazelcast;
 
 import static com.amazonaws.regions.RegionUtils.getRegion;
 import static org.apache.commons.lang3.StringUtils.isBlank;
@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import com.hazelcast.cluster.impl.TcpIpJoiner;
 import org.apache.commons.lang3.Validate;
 
 import com.amazonaws.auth.AWSCredentialsProvider;
@@ -40,12 +41,17 @@ public class TcpIpJoinerOverAWS extends TcpIpJoiner
     {
         super(Validate.notNull(node, "node can't be null"));
 
-        System.out.println("HEllooo");
+
         logger = node.getLogger(getClass());
+        logger.info("Using custom TcpIpJoinerOverAWS");
         awsConfig = node.getConfig().getNetworkConfig().getJoin().getAwsConfig();
         ec2 = new AmazonEC2Client(newAwsCredentialsProvider(awsConfig.getAccessKey(),
                 awsConfig.getSecretKey()));
 
+        if (isBlank(awsConfig.getAccessKey()) || isBlank(awsConfig.getSecretKey()))
+        {
+            logger.info("Using Instance Role");
+        }
         if (isNotBlank(awsConfig.getRegion()))
         {
             ec2.setRegion(getRegion(awsConfig.getRegion()));
