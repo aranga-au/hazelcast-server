@@ -51,10 +51,6 @@ public class TcpIpJoinerOverAWS extends TcpIpJoiner
         ec2 = new AmazonEC2Client(newAwsCredentialsProvider(awsConfig.getAccessKey(),
                 awsConfig.getSecretKey()));
 
-        if (isBlank(awsConfig.getAccessKey()) || isBlank(awsConfig.getSecretKey()))
-        {
-            logger.info("Using Instance Role");
-        }
         if (isNotBlank(awsConfig.getRegion()))
         {
 
