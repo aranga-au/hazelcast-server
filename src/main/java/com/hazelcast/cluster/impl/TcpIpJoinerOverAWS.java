@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.List;
 
 
+import com.amazonaws.regions.RegionUtils;
 import org.apache.commons.lang3.Validate;
 
 import com.amazonaws.auth.AWSCredentialsProvider;
@@ -43,7 +44,9 @@ public class TcpIpJoinerOverAWS extends TcpIpJoiner
 
 
         logger = node.getLogger(getClass());
+        logger.info("================================================");
         logger.info("Using custom TcpIpJoinerOverAWS");
+        logger.info("================================================");
         awsConfig = node.getConfig().getNetworkConfig().getJoin().getAwsConfig();
         ec2 = new AmazonEC2Client(newAwsCredentialsProvider(awsConfig.getAccessKey(),
                 awsConfig.getSecretKey()));
@@ -54,9 +57,10 @@ public class TcpIpJoinerOverAWS extends TcpIpJoiner
         }
         if (isNotBlank(awsConfig.getRegion()))
         {
-            logger.info("region not provided,using sdk"+ getRegion(null));
+
             ec2.setRegion(getRegion(awsConfig.getRegion()));
         }
+
     }
 
     private static AWSCredentialsProvider newAwsCredentialsProvider(final String accessKey,
