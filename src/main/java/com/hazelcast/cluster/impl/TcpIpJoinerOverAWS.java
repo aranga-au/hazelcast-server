@@ -101,7 +101,7 @@ public class TcpIpJoinerOverAWS extends TcpIpJoiner
         if (isNotBlank(awsConfig.getSecurityGroupName()))
         {
             request.getFilters().add(
-                    new Filter().withName("group-name").withValues(awsConfig.getSecurityGroupName()));
+                    new Filter().withName("instance.group-name").withValues(awsConfig.getSecurityGroupName()));
         }
 
         if (isNotBlank(awsConfig.getTagKey()) && isNotBlank(awsConfig.getTagValue()))
