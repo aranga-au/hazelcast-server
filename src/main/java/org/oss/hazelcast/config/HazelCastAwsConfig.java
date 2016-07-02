@@ -18,7 +18,7 @@ import javax.annotation.PostConstruct;
  * Created by arang on 25/06/2016.
  */
 @Configuration
-@ConditionalOnProperty("aws.access.key")
+@ConditionalOnProperty("is.aws")
 public class HazelCastAwsConfig {
 
 
