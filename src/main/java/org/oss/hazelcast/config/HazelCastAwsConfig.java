@@ -49,7 +49,7 @@ public class HazelCastAwsConfig {
             c.getNetworkConfig().getJoin().getMulticastConfig().setEnabled(false);
             c.getNetworkConfig().getJoin().getTcpIpConfig().setEnabled(false);
             c.getNetworkConfig().getJoin().getAwsConfig().setEnabled(true);
-            if (StringUtils.isEmpty(awsAccessKey))
+            if (!StringUtils.isEmpty(awsAccessKey))
             {
                 c.getNetworkConfig().getJoin().getAwsConfig().setAccessKey(awsAccessKey);
                 c.getNetworkConfig().getJoin().getAwsConfig().setSecretKey(awsSecrectKey);
