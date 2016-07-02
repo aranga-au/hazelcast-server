@@ -37,7 +37,10 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test') 
 }
 
-
+/**
+ * create executable :
+ * NOTE:make sure to build in the same runtime environment
+ */
 springBoot {
 	executable = true
 }
