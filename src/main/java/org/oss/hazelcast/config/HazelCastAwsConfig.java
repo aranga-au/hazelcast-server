@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 
@@ -21,10 +22,10 @@ import javax.annotation.PostConstruct;
 public class HazelCastAwsConfig {
 
 
-    @Value("${aws.access.key:qqqqq}")
+    @Value("${aws.access.key:}")
     private String awsAccessKey;
 
-    @Value("${aws.secret.access.key:kkkkk}")
+    @Value("${aws.secret.access.key:}")
     private String awsSecrectKey;
 
     @PostConstruct
@@ -48,8 +49,12 @@ public class HazelCastAwsConfig {
             c.getNetworkConfig().getJoin().getMulticastConfig().setEnabled(false);
             c.getNetworkConfig().getJoin().getTcpIpConfig().setEnabled(false);
             c.getNetworkConfig().getJoin().getAwsConfig().setEnabled(true);
-            c.getNetworkConfig().getJoin().getAwsConfig().setAccessKey(awsAccessKey);
-            c.getNetworkConfig().getJoin().getAwsConfig().setSecretKey(awsSecrectKey);
+            if (StringUtils.isEmpty(awsAccessKey))
+            {
+                c.getNetworkConfig().getJoin().getAwsConfig().setAccessKey(awsAccessKey);
+                c.getNetworkConfig().getJoin().getAwsConfig().setSecretKey(awsSecrectKey);
+
+            }
             c.getNetworkConfig().getJoin().getAwsConfig().setRegion("ap-southeast-2");
             c.getNetworkConfig().getJoin().getAwsConfig().setHostHeader("ec2.amazonaws.com");
             c.getNetworkConfig().getJoin().getAwsConfig().setSecurityGroupName("hazelcast-sg");
