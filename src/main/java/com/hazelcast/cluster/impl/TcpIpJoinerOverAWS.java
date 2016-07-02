@@ -1,4 +1,4 @@
-package org.oss.cluster.hazelcast;
+package com.hazelcast.cluster.impl;
 
 import static com.amazonaws.regions.RegionUtils.getRegion;
 import static org.apache.commons.lang3.StringUtils.isBlank;
