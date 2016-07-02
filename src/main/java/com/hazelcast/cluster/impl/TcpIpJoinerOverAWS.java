@@ -1,4 +1,4 @@
-package com.hazelcast.cluster;
+package com.hazelcast.cluster.impl;
 
 import static com.amazonaws.regions.RegionUtils.getRegion;
 import static org.apache.commons.lang3.StringUtils.isBlank;
@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-//import com.hazelcast.cluster.impl.TcpIpJoiner;
-import com.hazelcast.cluster.impl.TcpIpJoiner;
 import org.apache.commons.lang3.Validate;
 
 import com.amazonaws.auth.AWSCredentialsProvider;
@@ -41,7 +39,6 @@ public class TcpIpJoinerOverAWS extends TcpIpJoiner
     public TcpIpJoinerOverAWS(final Node node)
     {
         super(Validate.notNull(node, "node can't be null"));
-        System.out.println("HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO AWS");
 
         logger = node.getLogger(getClass());
         awsConfig = node.getConfig().getNetworkConfig().getJoin().getAwsConfig();
