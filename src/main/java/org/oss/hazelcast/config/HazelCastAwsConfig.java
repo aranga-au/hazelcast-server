@@ -41,7 +41,6 @@ public class HazelCastAwsConfig {
     public Config createConig()
     {
         try {
-
             System.out.println(awsAccessKey);
             Config c = new Config();
             c.setInstanceName("test-hazelcast-instance-1");
@@ -50,7 +49,16 @@ public class HazelCastAwsConfig {
             c.getNetworkConfig().getJoin().getMulticastConfig().setEnabled(false);
             c.getNetworkConfig().getJoin().getTcpIpConfig().setEnabled(false);
             c.getNetworkConfig().getJoin().getAwsConfig().setEnabled(true);
+            if (!StringUtils.isEmpty(awsAccessKey))
+            {
+                c.getNetworkConfig().getJoin().getAwsConfig().setAccessKey(awsAccessKey);
+                c.getNetworkConfig().getJoin().getAwsConfig().setSecretKey(awsSecrectKey);
 
+            }
+            c.getNetworkConfig().getJoin().getAwsConfig().setRegion("ap-southeast-2");
+            c.getNetworkConfig().getJoin().getAwsConfig().setHostHeader("ec2.amazonaws.com");
+            c.getNetworkConfig().getJoin().getAwsConfig().setSecurityGroupName("hazelcast-sg");
+            c.getNetworkConfig().getJoin().getAwsConfig().setConnectionTimeoutSeconds(3600);
             return c;
         }
         catch (Throwable e)
