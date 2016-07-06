@@ -1,5 +1,7 @@
 # hazelcast-node test
-## NOTE: new TCP Joiner introduce to use AWS Instance Role
+
+NOTE: new TCP Joiner introduce to use AWS Instance Role (based on https://gist.github.com/ddossot/814fadc6e2cf577f87f7)
+
 http://hazelcast.org/
 
 
