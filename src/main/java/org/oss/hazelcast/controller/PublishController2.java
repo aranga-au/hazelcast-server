@@ -15,6 +15,7 @@ import java.util.concurrent.locks.Lock;
 
 /**
  * Created by arang on 26/06/2016.
+ * Lock based on concurrent maps
  */
 @RestController
 public class PublishController2
@@ -43,6 +44,7 @@ public class PublishController2
             {
                 message.put("lock",true);
                 message.put("lock time",(System.currentTimeMillis()-ii)+" ms");
+                message.put("Type","Concurrent Map implementation");
                 publisher.publish(message);
                 Thread.sleep(13500);
 
