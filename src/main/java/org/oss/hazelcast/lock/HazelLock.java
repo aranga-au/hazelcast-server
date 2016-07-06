@@ -55,7 +55,7 @@ public class HazelLock implements Lock
         long t = System.currentTimeMillis();
         DateTime stime = new DateTime(new Date());
         System.out.println("Try lock for thread "+Thread.currentThread().getId());
-
+        time = time +150; //minimul 150 ms
         long m = 0;
 
         while ( (!uuid.equals(o)) && i < times  && (m < time) )
@@ -85,7 +85,7 @@ public class HazelLock implements Lock
     @Override
     public boolean tryLock()
     {
-        Object o = waitAndTry(1,1);
+        Object o = waitAndTry(1000,200);
         System.out.println(o);
         return uuid.equals(o);
     }
