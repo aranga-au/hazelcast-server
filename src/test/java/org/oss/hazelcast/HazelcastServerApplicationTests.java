@@ -41,9 +41,9 @@ public class HazelcastServerApplicationTests {
 	public void testTwoProcess() throws Exception
 	{
 		Lock lock = locksService.getLock("my-key");
-		if (lock.tryLock(50, TimeUnit.SECONDS)) {
+		if (lock.tryLock(20, TimeUnit.MILLISECONDS)) {
 			System.out.println("Lock acure");
-			Thread.sleep(60000);
+			Thread.sleep(1000);
 			lock.unlock();
 		}
 		else
