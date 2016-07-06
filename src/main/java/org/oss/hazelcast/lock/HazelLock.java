@@ -84,8 +84,13 @@ public class HazelLock implements Lock
     @Override
     public boolean tryLock()
     {
-        Object o = waitAndTry(1000,800);
+        Object o = waitAndTry(1000,500);
         System.out.println("object id"+o);
+        if (o == null)
+        {
+            o = map.get(uniqueKey);
+        }
+        System.out.println(uuid.equals(o));
         return uuid.equals(o);
     }
 
