@@ -61,9 +61,9 @@ public class HazelLock implements Lock
         while ( (!uuid.equals(o)) && i < times  && (m < time) )
         {
 
+            m = System.currentTimeMillis()-t;
             o = map.putIfAbsent(uniqueKey,uuid);
 
-            final Duration d = new Duration(System.currentTimeMillis());
             i++;
             if (i >= times)
             {
@@ -71,7 +71,6 @@ public class HazelLock implements Lock
             }
 
 
-            m = System.currentTimeMillis()-t;
 
             System.out.println(m+" "+time);
             sleepRandom();
@@ -85,8 +84,8 @@ public class HazelLock implements Lock
     @Override
     public boolean tryLock()
     {
-        Object o = waitAndTry(1000,200);
-        System.out.println(o);
+        Object o = waitAndTry(1000,800);
+        System.out.println("object id"+o);
         return uuid.equals(o);
     }
 
