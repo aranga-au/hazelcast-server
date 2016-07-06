@@ -67,4 +67,10 @@ public class PublishController2
         }
         return message;
     }
+
+    @RequestMapping("/api/clear")
+    public String clearLock()
+    {
+        return instance.forceClear("my-lock");
+    }
 }

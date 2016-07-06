@@ -35,5 +35,8 @@ public class DistributedLocksService
         return new HazelLock(key,lockMap);
     }
 
-
+    public String forceClear(String key)
+    {
+        return lockMap.remove(key);
+    }
 }
